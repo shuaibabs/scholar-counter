@@ -1,0 +1,23 @@
+<div class="container-fluid">
+<mat-tab-group>
+
+  <div *ngIf="showUserDashboard" >
+  <mat-tab label="User Dashboard">
+    <app-user-dashboard></app-user-dashboard>
+  </mat-tab>
+</div>
+
+<div *ngIf="showExecutiveDashboard" >
+<mat-tab label="Executive Dashboard">
+    <app-executive-dashboard></app-executive-dashboard>
+  </mat-tab>
+</div>
+
+<div *ngIf="showAdminDashboard" >
+ <mat-tab label="Admin Dashboard">
+    <app-admin-dashboard></app-admin-dashboard>
+  </mat-tab>
+</div>
+
+</mat-tab-group>
+</div>

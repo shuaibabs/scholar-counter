@@ -1,0 +1,46 @@
+<div class="cointainer-fluid" style="width: 600px; height: 450px;">
+
+  <div class="row toolbar-title d-flex justify-content-center" style="color: navy; font-size: 16px;cursor: pointer;">
+    <!-- Please browse a profile picture. &nbsp;&nbsp;&nbsp;&nbsp; -->
+    <input style="background-color: navy; color: white; width: 100%; cursor: pointer;" id="browseImage"
+      name="browseImage" type="file" accept="image/*" (change)="fileChangeEvent($event)">
+  </div><br>
+
+  <div class="row">
+
+    <div class="justify-content-center col col-sm-12 col-md-8 col-lg-8" style="height: 350px;">
+      <mat-card>
+        <image-cropper style="height: 100%;" class="" format="jpg" [imageChangedEvent]="imageChangedEvent"
+          [maintainAspectRatio]="true" [aspectRatio]="1 / 1" (imageCropped)="imageCropped($event)"
+          (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+        </image-cropper>
+
+        <!-- <image-cropper style="height: 100%;" class="" format="jpg" [imageChangedEvent]="imageChangedEvent"
+          [maintainAspectRatio]="true" [aspectRatio]="1 / 1" [resizeToWidth]="512" (imageCropped)="imageCropped($event)"
+          (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+        </image-cropper> -->
+
+      </mat-card>
+    </div>
+
+    <div class="justify-content-center col col-sm-12 col-md-4 col-lg-4" style="height: 350px;">
+      <div class="row d-flex justify-content-center">
+        <mat-card width=90%>
+          <img class="clipped" [src]="croppedImage" style="width: 100%;" />
+        </mat-card>
+      </div><br>
+      <div class="row d-flex justify-content-center">
+        <button mat-raised-button color="primary" (click)="upload()" style="width: 90%;"
+          [disabled]="this.uploadButtonButtonDisabled">Upload</button>
+      </div><br>
+      <div class="row d-flex justify-content-center">
+        <button mat-raised-button style="background-color: lightgreen;width: 90%;" (click)="setDefault()">Set
+          Default</button>
+      </div><br>
+      <div class="row d-flex justify-content-center">
+        <button mat-raised-button color="warn" (click)="cancel()" style="width: 90%;">Cancel</button>
+      </div><br>
+    </div>
+  </div>
+
+</div>

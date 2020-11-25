@@ -1,0 +1,44 @@
+<div class="container-fluid">
+  <mat-tab-group>
+
+    <div *ngIf="showCounter5Report">
+      <mat-tab label="Counter 5 Reports">
+        <app-counter5-reports></app-counter5-reports>
+      </mat-tab>
+    </div>
+
+    <div *ngIf="showCounter4Report">
+      <mat-tab label="Counter 4 Reports">
+        <div>
+          <app-counter4-reports></app-counter4-reports>
+        </div>
+      </mat-tab>
+    </div>
+
+    <!-- <div *ngIf="showDataAnalytics">
+      <mat-tab label="Data Analytics">
+        <app-data-analytics></app-data-analytics>
+      </mat-tab>
+    </div> -->
+
+
+    <div *ngIf="showStandardReports">
+      <mat-tab label="Standard Reports">
+        <app-standard-reports></app-standard-reports>
+      </mat-tab>
+    </div>
+
+    <div *ngIf="showCustomReportst">
+      <mat-tab label="Custom Reports">
+        <app-custom-reports></app-custom-reports>
+      </mat-tab>
+    </div>
+
+    <div *ngIf="showPlatformReports">
+      <mat-tab label="Platform Reports">
+        <app-platform-reports></app-platform-reports>
+      </mat-tab>
+    </div>
+
+  </mat-tab-group>
+</div>

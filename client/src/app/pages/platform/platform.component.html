@@ -1,0 +1,24 @@
+<div class="container-fluid">
+  <mat-tab-group>
+
+    <div *ngIf="showPlatformDetails">
+      <mat-tab label="Platform Details">
+        <app-platform-details></app-platform-details>
+      </mat-tab>
+    </div>
+
+    <div *ngIf="showPlatformManagement">
+      <mat-tab label="Platform Management">
+        <app-platform-management></app-platform-management>
+      </mat-tab>
+    </div>
+
+    <div *ngIf="showPlatformReportsMgmt">
+      <mat-tab label="Platform Reports Mgmt">
+        <app-platform-report-list></app-platform-report-list>
+      </mat-tab>
+    </div>
+
+
+  </mat-tab-group>
+</div>

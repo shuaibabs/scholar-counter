@@ -1,0 +1,78 @@
+<div class="container-fluid" style="background-color: gold;">
+
+  <div class="row toolbar-row d-flex justify-content-center" style="position: fixed; z-index: 10;">
+
+    <div class="col d-flex justify-content-start">
+      <img [src]="this.baseService.userProfile.logo" style="height: 54px; margin: 3px; align-self: left; font-size: 10px;"
+        alt="Company Logo">
+      <button class="header-button" mat-button (click)="drawer.toggle()" title="Toggle Left Menu">
+        <mat-icon>menu</mat-icon>
+        <!-- <span style="color: green; font-size: 24px;">Scholar</span>
+        <span style="color: navy; font-size: 24px;">Counter</span> -->
+      </button>
+      <button class="header-button" mat-button>
+        <span style="font-size: 18px; font-weight: 400; ">{{ this.baseService.userProfile.accountName }} ({{this.baseService.userProfile.accountCode}} )</span>
+      </button>
+    </div>
+
+    <div class="col d-flex justify-content-end">
+      <button *ngFor="let menuItem of menuItems" class="header-button" mat-button routerLink={{menuItem.routerLink}}
+        routerLinkActive="active" title="{{menuItem.menu}}">
+        <mat-icon>{{menuItem.icon}}</mat-icon>
+      </button>
+      <button class="header-button" mat-button title="Notifications">
+        <mat-icon>notification_important</mat-icon>
+      </button>
+      <button class="header-button" mat-button routerLink='/logout' routerLinkActive="active" title="Logout">
+        <mat-icon style="font-size: 24px; color: red;" (click)="logout()">logout</mat-icon>
+      </button>
+    </div>
+
+  </div>
+  <!-- ********************************************************************* -->
+
+  <br><br><br>
+
+    <!-- Side menu Navigation -->
+    <mat-sidenav-container>
+
+      <!-- Left menu -->
+      <mat-sidenav class="sidenav" #drawer mode="side" role="navigation" opened="true">
+
+        <mat-card style="margin: 3px;">
+          <mat-card-header style="margin-bottom: -20px;">
+            <div mat-card-avatar>
+              <img mat-card-avatar style="cursor: pointer;" [src]="this.baseService.userProfile.photo" >
+            </div>
+            <mat-card-title style="font-size: 16px;"> {{ this.methods.getFormattedUCString(this.baseService.userProfile.lastName + ' ' + this.baseService.userProfile.firstName) }} </mat-card-title>
+            <mat-card-subtitle style="font-size: 14px;"> {{this.baseService.userProfile.role}} </mat-card-subtitle>
+          </mat-card-header>
+          </mat-card>
+
+        <mat-nav-list style="margin: 2px;">
+          <mat-accordion>
+            <!-- sidenav from backend  START-->
+            <mat-expansion-panel *ngFor="let menuItem of menuItems" #panelDashboard routerLink={{menuItem.routerLink}}
+              routerLinkActive="active" (click)="panelDashboard.expanded = true;" style="margin-bottom: 5px;">
+              <mat-expansion-panel-header style="margin-left: -10px; margin-right: -10px;">
+                <mat-panel-title>
+                  <mat-icon>{{menuItem.icon}}</mat-icon>&nbsp;{{menuItem.menu}}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+            </mat-expansion-panel>
+            <br>
+            <!-- sidenav from backend  START-->
+
+          </mat-accordion>
+        </mat-nav-list>
+      </mat-sidenav>
+
+      <!-- Right Content -->
+      <mat-sidenav-content style="min-height: 100vh;">
+        <router-outlet> </router-outlet>
+      </mat-sidenav-content>
+
+    </mat-sidenav-container>
+
+  <br>
+</div>

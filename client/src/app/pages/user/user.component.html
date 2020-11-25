@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <mat-tab-group>
+
+    <div *ngIf="showMyProfile">
+      <mat-tab label="My Profile">
+        <app-user-profile [currentUserID] = "baseService.userProfile.userID"></app-user-profile>
+      </mat-tab>
+    </div>
+
+    <div *ngIf="showSecurity">
+      <mat-tab label="My Security" [disabled]="!showSecurity">
+        <app-user-security
+        [currentUserID] = "baseService.userProfile.userID"
+        [currentLoginID] = "baseService.userProfile.loginID"
+        ></app-user-security>
+      </mat-tab>
+    </div>
+
+    <div *ngIf="showUserMgmt">
+      <mat-tab label="User Mgmt">
+        <app-user-mgmt></app-user-mgmt>
+      </mat-tab>
+    </div>
+
+
+  </mat-tab-group>
+</div>

@@ -1,0 +1,10 @@
+.mat-card {
+    border: 2px solid navy;
+    width: 100%;
+  }
+
+  .heading {
+    color: navy;
+    font-size: 20px;
+    font: bold;
+  }

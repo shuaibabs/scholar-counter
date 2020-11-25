@@ -1,0 +1,110 @@
+<mat-tab-group>
+
+  <!-- COUNTER 5 Reports -->
+  <mat-tab label="Counter 5 Reports">
+    <div class="container-fluid">
+      <div class="row">
+        <h3>This section allows you to view and download COUNTER 5 complaint reports only.</h3>
+      </div>
+
+      <!-- Report Type -->
+      <div class="row">
+        <div class="col col-sm-12 col-md-6 col-lg-6">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Counter 5 Report</mat-label>
+            <mat-select placeholder="Select Counter 5 Report Type">
+              <mat-option *ngFor="let report of c5Reports" [value]="report.Report_ID">
+                {{report.Report_ID + ' : ' + report.Report_Name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col col-sm-12 col-md-4 col-lg-3">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Begin Date/Month</mat-label>
+            <input matInput [matDatepicker]="begin_date_picker">
+            <mat-datepicker-toggle matSuffix [for]="begin_date_picker"></mat-datepicker-toggle>
+            <mat-datepicker #begin_date_picker ></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col col-sm-12 col-md-4 col-lg-3">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>End Date/Month</mat-label>
+            <input matInput [matDatepicker]="end_date_picker">
+            <mat-datepicker-toggle matSuffix [for]="end_date_picker"></mat-datepicker-toggle>
+            <mat-datepicker #end_date_picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col col-sm-12 col-md-4 col-lg-3">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Metric Type</mat-label>
+            <mat-select placeholder="Select Metric Type">
+              <mat-option *ngFor="let report of c5Reports" [value]="report.Report_ID">
+                {{report.Report_ID + ' : ' + report.Report_Name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col col-sm-12 col-md-4 col-lg-3">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Data Type</mat-label>
+            <mat-select placeholder="Select  Data Type">
+              <mat-option *ngFor="let report of c5Reports" [value]="report.Report_ID">
+                {{report.Report_ID + ' : ' + report.Report_Name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col col-sm-12 col-md-4 col-lg-3">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Access Type</mat-label>
+            <mat-select placeholder="Select Access Type">
+              <<mat-option *ngFor="let report of c5Reports" [value]="report.Report_ID">
+                {{report.Report_ID + ' : ' + report.Report_Name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col col-sm-12 col-md-4 col-lg-3">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Access Method</mat-label>
+            <mat-select placeholder=" Select Access Method">
+              <mat-option *ngFor="let report of c5Reports" [value]="report.Report_ID">
+                {{report.Report_ID + ' : ' + report.Report_Name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col justify-content-end d-flex">
+          <button mat-raised-button color="primary">CSV</button> &nbsp;&nbsp;
+          <button mat-raised-button color="primary">TSV</button> &nbsp;&nbsp;
+          <button mat-raised-button color="primary">XLS</button> &nbsp;&nbsp;
+          <button mat-raised-button color="primary">PDF</button> &nbsp;&nbsp;
+          <button mat-raised-button color="primary">HTML</button> &nbsp;&nbsp;
+          <button mat-raised-button color="primary">E-Mail</button> &nbsp;&nbsp;
+        </div>
+
+      </div>
+
+
+    </div>
+  </mat-tab>
+
+
+  <!-- COUNTER 4 Reports -->
+  <mat-tab label="Counter 4 Reports">
+
+  </mat-tab>
+</mat-tab-group>
+
+

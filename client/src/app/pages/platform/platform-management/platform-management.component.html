@@ -1,0 +1,259 @@
+
+
+  <div class="container-fluid">
+    <br>
+      <div class="row">
+        <span class="toolbar-title">This section allows you to Create, Modify and Delete PLATFORMS
+        </span>
+      </div>
+
+      <br>
+
+      <!-- PLATFORM NAME -->
+      <div class="row">
+          <div class="col col-sm-12 col-md-6 col-lg-6">
+              <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Select a PLATFORM to Modify/Delete</mat-label>
+                  <mat-select placeholder="Select Counter 5 Report Type" [(ngModel)]="selectedPlatform"
+                      (selectionChange)="onSelectPlatform(selectedPlatform)">
+                      <mat-option *ngFor="let platform of platforms" [value]="platform.platform_id">
+                          {{platform.platform_code}} : {{platform.platform_name}}
+                      </mat-option>
+                  </mat-select>
+              </mat-form-field>
+
+          </div>
+
+          <div class="col col-sm-12 col-md-6 col-lg-6 justify-content-end">
+              <button mat-raised-button style="margin-top: 10px;" color="primary" (click)="createNewPlatformbutton()">
+                  <mat-icon>add</mat-icon>Add New Platform
+              </button>
+          </div>
+
+      </div>
+
+  </div>
+
+
+  <mat-divider></mat-divider>
+
+  <!------------------------------------------------------------------------------------------------------------------------>
+
+
+  <form *ngIf="showPlatform" #userForm='ngForm'  class="container-fluid">
+      <br>
+      <!-- PLATFORM FORM FOR CREATE UPDATE AND DELETE -->
+      <div class="row">
+          <div class="col-sm-12 col-md-4 col-lg-3">
+              <mat-form-field appearance="outline" class="full-width">
+                  <mat-label> Platform(required)</mat-label>
+                  <input matInput placeholder="www.new.platform.org" name="platform" required [(ngModel)]="platform">
+              </mat-form-field>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-lg-3">
+              <mat-form-field appearance="outline" class="full-width">
+                  <mat-label> Platform Code(required)</mat-label>
+                  <input matInput placeholder="NWPLF" name="platformCode" required [(ngModel)]="platformCode">
+                  <mat-error>Please type a Platform Code</mat-error>
+              </mat-form-field>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-lg-3">
+              <mat-form-field appearance="outline" class="full-width">
+                  <mat-label> Platform Name(required)</mat-label>
+                  <input matInput placeholder="New Plaform Of New World" name="platformName" required [(ngModel)]="platformName">
+                  <mat-error>Please type a Platform Name</mat-error>
+              </mat-form-field>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-lg-3">
+              <mat-form-field appearance="outline" class="full-width">
+                  <mat-label> Email(required)</mat-label>
+                  <input matInput placeholder="Ex. pat@example.com" name="email" required [(ngModel)]="email"
+                      [formControl]="emailFormControl">
+                  <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                      Please enter a valid email address
+                  </mat-error>
+                  <mat-error>
+                      Email is <strong>required</strong>
+                  </mat-error>
+              </mat-form-field>
+          </div>
+
+          <div class="col col-sm-12 col-md-4 col-lg-3">
+              <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Choose STATUS(required)</mat-label>
+                  <mat-select placeholder="Select a Status of Platform" [(ngModel)]="selectedStatus" name="status"
+                      required>
+                      <mat-option *ngFor="let status of status" [value]="status">
+                          {{status}}
+                      </mat-option>
+                  </mat-select>
+                  <mat-error>Please chooose Status of Platform</mat-error>
+              </mat-form-field>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-lg-3">
+              <mat-form-field appearance="outline" class="full-width">
+                  <mat-label> Country(required)</mat-label>
+                  <input matInput placeholder="Country" name="country" required [(ngModel)]="country">
+                  <mat-error>Please type a Country Name </mat-error>
+              </mat-form-field>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-lg-3">
+              <mat-form-field appearance="outline" class="full-width">
+                  <mat-label> State Name(required)</mat-label>
+                  <input matInput placeholder="State Name" name="state" required [(ngModel)]="state">
+                  <mat-error>Please type a State Name</mat-error>
+              </mat-form-field>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-lg-3">
+              <mat-form-field appearance="outline" class="full-width">
+                  <mat-label> City Name(required)</mat-label>
+                  <input matInput placeholder="City Name" name="city" required [(ngModel)]="city">
+                  <mat-error>Please type a City Name</mat-error>
+              </mat-form-field>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-lg-3">
+              <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Zip Code</mat-label>
+                  <input matInput placeholder="Zip Code" [(ngModel)]="zip"
+                      [ngModelOptions]="{standalone:true}">
+              </mat-form-field>
+          </div>
+
+
+          <div class="col-sm-12 col-md-4 col-lg-3">
+              <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Contact Person(required)</mat-label>
+                  <input matInput placeholder="Platform" name="contactPerson" required
+                      [(ngModel)]="contactPerson">
+                  <mat-error>Please type a Contact Person</mat-error>
+              </mat-form-field>
+          </div>
+
+
+          <div class="col-sm-12 col-md-4 col-lg-3">
+              <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Primary Contact Number(required)</mat-label>
+                  <input matInput placeholder="Platform" name="primaryContactNumber" required
+                      [(ngModel)]="primaryContactNumber">
+                  <mat-error>Please choose Zip Code</mat-error>
+              </mat-form-field>
+          </div>
+
+
+
+          <div class="col-sm-12 col-md-4 col-lg-3">
+              <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Secondary Contact Number</mat-label>
+                  <input matInput placeholder="Platform" [(ngModel)]="secondaryContactNumber"
+                      [ngModelOptions]="{standalone:true}">
+              </mat-form-field>
+          </div>
+
+
+          <div class="col-sm-12 col-md-4 col-lg-3">
+              <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Sushi URL(required)</mat-label>
+                  <input matInput placeholder="Platform" name="sushiUrl" required [(ngModel)]="sushiUrl">
+                  <mat-error>Please type a Contact Person</mat-error>
+              </mat-form-field>
+          </div>
+
+          <div class="col col-sm-12 col-md-4 col-lg-3">
+              <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Choose Customer Type(required)</mat-label>
+                  <mat-select placeholder="Select Counter 5 Report Type" name="customerType"
+                      [(ngModel)]="selectedcustomerType" required>
+                      <mat-option *ngFor="let customerType of customerTypes" [value]="customerType">
+                          {{customerType}}
+                      </mat-option>
+                  </mat-select>
+                  <mat-error>Please chooose Customer Type</mat-error>
+              </mat-form-field>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-lg-3">
+              <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Customer ID(required)</mat-label>
+                  <input matInput placeholder="Platform" name="customerId" required [(ngModel)]="customerId">
+                  <mat-error>Please type a Contact Person</mat-error>
+              </mat-form-field>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-lg-3">
+              <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Requestor ID(required)</mat-label>
+                  <input matInput placeholder="Platform" name="requestorId" required [(ngModel)]="requestorId">
+                  <mat-error>Please type a Contact Person</mat-error>
+              </mat-form-field>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-lg-3">
+              <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>API Key(required)</mat-label>
+                  <input matInput placeholder="Platform" name="apiKey" required [(ngModel)]="apiKey">
+                  <mat-error>Please type a Contact Person</mat-error>
+              </mat-form-field>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-lg-3">
+              <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Provider URL</mat-label>
+                  <input matInput placeholder="Platform" [(ngModel)]="providerUrl" [ngModelOptions]="{standalone:true}">
+              </mat-form-field>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-lg-3">
+              <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Username</mat-label>
+                  <input matInput placeholder="Platform" [(ngModel)]="username" [ngModelOptions]="{standalone:true}">
+              </mat-form-field>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-lg-3">
+              <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Password</mat-label>
+                  <input matInput placeholder="Password" [(ngModel)]="password" [ngModelOptions]="{standalone:true}">
+              </mat-form-field>
+          </div>
+
+
+          <!-- Button for Creating New Platform -->
+          <div *ngIf="showCreateButton" class="col col-sm-12 col-md-6 col-lg-6">
+              <button type="submit"    [disabled]="userForm.invalid"  mat-raised-button color="primary"
+               (click)="createNewPlatform()">
+                  CreatePlatform
+              </button>
+          </div>
+
+
+          <!-- Button for Updating  platform -->
+          <div *ngIf="showUpdateButton" class="col col-sm-12 col-md-6 col-lg-6">
+              <button type="submit" [disabled]="userForm.invalid" [disabled]="emailFormControl.invalid"  mat-raised-button color="primary"
+                  (click)="confirmUpdatePlatform()">
+                      Update Platform Details
+                </button>
+          </div>
+
+
+          <!-- Button for Updating  platform -->
+          <div *ngIf="showUpdateButton" class="col col-sm-12 col-md-6 col-lg-6">
+              <button mat-raised-button color="warn" (click)="confirmDeletePlatform()">
+                  DeletePlatform
+              </button>
+          </div>
+
+      </div>
+
+  </form>
+
+  <br>
+  <mat-divider></mat-divider>
+
+

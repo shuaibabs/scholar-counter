@@ -1,0 +1,190 @@
+<div class="container-fluid">
+  <div class="row">
+    <h3>This section allows you to view and download COUNTER 5 compliant reports only.</h3>
+  </div>
+
+  <!-- Report Type -->
+  <div class="row">
+    <div class="col col-sm-12 col-md-6 col-lg-6">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Counter 5 Report(required)</mat-label>
+        <mat-select placeholder="Select Counter 5 Report Type" [(ngModel)]="selectedReport"
+          [formControl]="reportControl" required (selectionChange)="onSelectReport(selectedReport)">
+          <mat-option *ngFor="let report of c5Reports" [value]="report.report_id">
+            {{report.report_id}}: {{report.report_name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="reportControl.hasError('required')">Please choose Counter 5 Report</mat-error>
+      </mat-form-field>
+    </div>
+
+
+    <!-- [matDatepicker]="begin_date_picker" -->
+    <div class="col col-sm-12 col-md-4 col-lg-3">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Begin Date</mat-label>
+        <input required matInput [matDatepicker]="begin_date_picker" [(ngModel)]="beginDate" [min]="getMinDate()"
+          [max]="getMaxDate()" disabled>
+        <mat-datepicker-toggle matSuffix [for]="begin_date_picker"></mat-datepicker-toggle>
+        <mat-datepicker #begin_date_picker touchUi startView="year"
+          (monthSelected)="beginDateMonthSelectEvent($event, begin_date_picker)" disabled=false color="primary">
+        </mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col col-sm-12 col-md-4 col-lg-3">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>End Date</mat-label>
+        <input matInput [matDatepicker]="end_date_picker" [(ngModel)]="endDate" [min]="getMinDate()"
+          [max]="getMaxDate()" disabled>
+        <mat-datepicker-toggle matSuffix [for]="end_date_picker"></mat-datepicker-toggle>
+        <mat-datepicker #end_date_picker touchUi startView="year"
+          (monthSelected)="endDateMonthSelectEvent($event, end_date_picker)" disabled=false color="primary">
+        </mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col col-sm-12 col-md-4 col-lg-3">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Metric Type</mat-label>
+        <mat-select placeholder="Select Metric Type" [(ngModel)]="selectedMetricType" multiple>
+          <mat-option *ngFor="let metricType of metricTypes" [value]="metricType">
+            {{metricType }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col col-sm-12 col-md-4 col-lg-3">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Data Type</mat-label>
+        <mat-select placeholder="Select  Data Type" [(ngModel)]="selectedDataType" multiple>
+          <mat-option *ngFor="let dataType of dataTypes" [value]="dataType">
+            {{dataType}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col col-sm-12 col-md-4 col-lg-3">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Access Type</mat-label>
+        <mat-select placeholder="Select Access Type" [(ngModel)]="selectedAccessType" multiple>
+          <mat-option *ngFor="let accessType of accessTypes" [value]="accessType">
+            {{accessType}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col col-sm-12 col-md-4 col-lg-3">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Access Method</mat-label>
+        <mat-select placeholder=" Select Access Method" [(ngModel)]="selectedAccessMethod" multiple>
+          <mat-option *ngFor="let accessMethod of accessMethods" [value]="accessMethod">
+            {{accessMethod}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+
+  <div class="row justify-content-end d-flex" style="font-size: 20px;">
+    <button mat-raised-button color="primary" (click)="click_reset()" style="background-color: grey;">
+      <mat-icon>autorenew</mat-icon>
+      &nbsp;&nbsp;Reset
+    </button> &nbsp;&nbsp;
+    <button mat-raised-button color="primary" [disabled]="buttonPreview">
+      <fa-icon [icon]="baseService.faIcon.faFileCsv" style="font-size: 20px;"></fa-icon>
+      &nbsp;&nbsp;CSV
+    </button> &nbsp;&nbsp;
+    <button mat-raised-button color="primary" [disabled]="buttonPreview">
+      <fa-icon [icon]="baseService.faIcon.faFileAlt" style="font-size: 20px;"></fa-icon>&nbsp;&nbsp;TSV
+    </button> &nbsp;&nbsp;
+    <button mat-raised-button color="primary" [disabled]="buttonPreview" (click)="download()">
+      <fa-icon [icon]="baseService.faIcon.faFileExcel" style="font-size: 20px;"></fa-icon>&nbsp;&nbsp;XLS
+    </button> &nbsp;&nbsp;
+    <button mat-raised-button color="primary" [disabled]="buttonPreview">
+      <mat-icon>picture_as_pdf</mat-icon>
+      &nbsp;&nbsp;PDF
+    </button> &nbsp;&nbsp;
+    <button mat-raised-button color="primary" [disabled]="buttonPreview">
+      <mat-icon>mail_outline</mat-icon>&nbsp;E-Mail
+    </button> &nbsp;&nbsp;
+    <button mat-raised-button color="primary" [disabled]="buttonPreview">
+      <mat-icon>print</mat-icon>&nbsp;Print
+    </button>
+    &nbsp;&nbsp;
+    <button mat-raised-button style="background-color: lightgreen;" (click)="click_preview()" [disabled]="pagePreview">
+      <mat-icon>pageview</mat-icon>
+      &nbsp;&nbsp;Preview
+    </button> &nbsp;&nbsp;
+  </div>
+</div>
+
+
+<div class="col col-sm-12 col-md-12 col-lg-12" *ngIf="tablePreview" id="excel-table" >
+  <span class="title">REPORT HEADERS </span>
+  <div class="table-responsive">
+  <table class="table">
+    <tr>
+      <th>Report_Name</th>
+      <td>{{reportHeaders.Report_Name}}</td>
+    </tr>
+    <tr>
+    <tr>
+      <th>Report_ID</th>
+      <td>{{reportHeaders.Report_ID}}</td>
+    </tr>
+    <tr>
+    <tr>
+      <th>Release</th>
+      <td>{{reportHeaders.Release}}</td>
+    </tr>
+    <tr>
+      <th>Institution_Name</th>
+      <td>{{reportHeaders.Institution_Name}}</td>
+    </tr>
+    <tr>
+      <th>Institution_ID </th>
+      <td>{{reportHeaders.Institution_ID}}</td>
+    </tr>
+    <tr>
+      <th>Metric_Types </th>
+      <td>{{reportHeaders.Metric_Types}}</td>
+    </tr>
+    <tr>
+      <th>Report_Filters</th>
+      <td>{{reportHeaders.Report_Filters}}</td>
+    </tr>
+    <tr>
+      <th>Report_Attributes</th>
+      <td>{{reportHeaders.Report_Attributes}}</td>
+    </tr>
+    <tr>
+      <th>Exceptions</th>
+      <td>{{reportHeaders.Exceptions}}</td>
+    </tr>
+    <tr>
+      <th>Reporting_Period</th>
+      <td>{{reportHeaders.Reporting_Period}}</td>
+    </tr>
+    <tr>
+      <th>Created</th>
+      <td>{{reportHeaders.Created}}</td>
+    </tr>
+    <tr>
+      <th>Created_By</th>
+      <td>{{reportHeaders.Created_By}}</td>
+    </tr>
+ 
+  </table>
+  </div>
+
+  <div>
+    <app-data-table [rowData]="rowData" [columnHeaders]='columnHeaders' [fileName]='fileName'></app-data-table>
+  </div>
+
+</div>

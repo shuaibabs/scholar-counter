@@ -1,0 +1,56 @@
+<span class="material-icons" style="float: right;cursor: pointer;color: red;margin-right: -25px;margin-top: -25px;" (click)="cancel()">
+    clear
+</span>
+<mat-card class="scroll">
+    <mat-card style="border: 2px solid navy;" *ngIf="show_Reply_Editor">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-12" style="height: 100%;">
+                    <h2>Reply</h2>
+                    <quill-editor [(ngModel)]="replyContent" [styles]="{minHeight: '200px'}" [modules]='editormodules'
+                        (onFocus)="focus($event)" (onEditorChanged)="changedEditor($event)" (onBlur)="blur($event)"
+                        (onEditorCreated)="created($event)" trackChanges="all"
+                        (onEditorCreated)="addBindingCreated($event)">
+                    </quill-editor><br>
+                </div>
+
+                <div class="col-sm-6"></div>
+
+                <div class="col-sm-2"><br>
+                    <button mat-raised-button color="primary" (click)="replyTicket()">
+                        Submit
+                    </button>
+                </div>
+
+                <div class="col-sm-2"><br>
+                    <button mat-raised-button color="primary" (click)="ticketClosed()">
+                        Closed
+                    </button>
+                </div>
+
+                <div class="col-sm-2"><br>
+                    <button mat-raised-button color="warn" (click)="cancel()">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </mat-card><br><br>
+
+    
+    <div class="container" style="border: 1px solid navy;">
+        <div class="row">
+
+            <div class="col-sm-12"><br>
+                <div style="font-size: 18px;"> <span style="color: blue;"> Ticket ID : </span> <b>{{ticketID}} </b>
+                    &nbsp;&nbsp;&nbsp; <span style="color: blue;"> Subject : </span> <b>{{subject}} </b> </div>
+                <div class="ql-snow">
+                    <div class="ql-editor" [innerHTML]="content">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</mat-card>

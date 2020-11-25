@@ -1,0 +1,18 @@
+.heading {
+  color: navy;
+  font-size: 20px;
+  font: bold;
+}
+
+.color {
+  color: navy;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.mat-card {
+  border: 2px solid navy;
+  width: 100%;
+}

@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <mat-tab-group>
+
+        <div *ngIf="showHelpdeskFAQ">
+            <mat-tab label="Ticket System">
+                <app-helpdesk-contact-us></app-helpdesk-contact-us>
+            </mat-tab>
+        </div>
+        
+        <div *ngIf="showHelpdeskContactUs">
+            <mat-tab label="Helpdesk FAQ">
+                <app-helpdesk-faq></app-helpdesk-faq>
+            </mat-tab>
+        </div>
+
+
+    </mat-tab-group>
+</div>

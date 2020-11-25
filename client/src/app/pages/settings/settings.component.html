@@ -1,0 +1,31 @@
+<div class="container-fluid">
+
+  <mat-tab-group>
+
+    <div *ngIf="showUserSettings">
+      <mat-tab label="User Settings">
+        <app-user-settings></app-user-settings>
+      </mat-tab>
+    </div>
+
+    <div *ngIf="showAppSettings">
+      <mat-tab label="App Settings">
+        <app-app-settings></app-app-settings>
+      </mat-tab>
+    </div>
+
+    <div *ngIf="showNotifications">
+      <mat-tab label="Notifications">
+        <app-notifications></app-notifications>
+      </mat-tab>
+    </div>
+
+    <div *ngIf="showSchedular">
+      <mat-tab label="Schedular">
+        <app-schedular></app-schedular>
+      </mat-tab>
+    </div>
+
+  </mat-tab-group>
+
+</div>

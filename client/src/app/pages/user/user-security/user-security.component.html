@@ -1,0 +1,134 @@
+<div class="container-fluid" style="margin-top: 10px;">
+
+  <div class="row">
+    <div class="col-sm-12 col-lg-3 col-md-3">
+      <mat-card class="full-width">
+        <!-- for change password -->
+        <div class="heading">Change Password</div><br>
+
+        <form class="full-width">
+          <mat-form-field class="full-width">
+            <mat-label>Current Password</mat-label>
+            <input matInput name="password" [type]="hide1 ? 'password' : 'text'" ngModel [(ngModel)]="currentPassword"
+              [ngModelOptions]="{standalone: true}" required #passKey="ngModel">
+            <mat-error *ngIf="passKey.invalid"> {{msg.second}} </mat-error>
+            <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide1">
+              <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+
+          <br>
+          <mat-form-field class="full-width">
+            <mat-label>New Password</mat-label>
+            <input matInput name="password" [type]="hide2 ? 'password' : 'text'" ngModel [(ngModel)]="newPassword"
+              [ngModelOptions]="{standalone: true}" required>
+            <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide2">
+              <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+
+          <br>
+          <mat-form-field class="full-width">
+            <mat-label>Confirm New Password</mat-label>
+            <input matInput name="password" [type]="hide3 ? 'password' : 'text'" ngModel [(ngModel)]="confirmPassword"
+              [ngModelOptions]="{standalone: true}" required #passKeyNew="ngModel">
+            <mat-error *ngIf="passKeyNew.invalid"> {{msg.first}} </mat-error>
+            <button mat-icon-button matSuffix (click)="hide3 = !hide3" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide3">
+              <mat-icon>{{hide3 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+
+          <br><br>
+          <div>
+            <button mat-raised-button (click)="changePassword()" color="primary">Update</button>
+            <button mat-raised-button color="warn" style="float: right;">Cancel</button><br>
+          </div>
+        </form>
+      </mat-card>
+    </div>
+
+    <!-- For security questions -->
+    <div class="col-sm-12 col-lg-9 col-md-9">
+      <mat-card>
+        <div class="heading">User security Q & A details</div><br>
+
+        <div class="row">
+          <div class="col-sm-12 col-md-4 col-lg-4">
+            <mat-card>
+              <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Security Question No. 1</mat-label>
+                <input matInput placeholder="Security Question No. 1" [(ngModel)]="userSecurity.question1">
+              </mat-form-field> <br>
+              <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Security Answer No. 1</mat-label>
+                <input matInput placeholder="Security Answer No. 1" [(ngModel)]="userSecurity.answer1">
+              </mat-form-field>
+            </mat-card>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-lg-4">
+            <mat-card>
+              <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Security Question No. 2</mat-label>
+                <input matInput placeholder="Security Question No. 2" [(ngModel)]="userSecurity.question2">
+              </mat-form-field> <br>
+              <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Security Answer No. 2</mat-label>
+                <input matInput placeholder="Security Answer No. 2" [(ngModel)]="userSecurity.answer2">
+              </mat-form-field>
+            </mat-card>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-lg-4">
+            <mat-card>
+              <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Security Question No. 3</mat-label>
+                <input matInput placeholder="Security Question No. 3" [(ngModel)]="userSecurity.question3">
+              </mat-form-field> <br>
+              <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Security Answer No. 3</mat-label>
+                <input matInput placeholder="Security Answer No. 3" [(ngModel)]="userSecurity.answer3">
+              </mat-form-field>
+            </mat-card>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-lg-4" style="margin-top: 20px;">
+            <button mat-raised-button (click)="updateUserSecurity()" color="primary">Update Security Details</button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+  </div>
+
+  <br>
+
+  <!-- for login activity -->
+  <div class="row d-flex justify-content-start color">
+    <div class="col">
+      <mat-card class="full-width">
+        <div class="heading" >Login Activity</div><br>
+        <div class="row">
+          <div class="col-sm-6 col-md-3 col-lg-3 d-flex justify-content-start">
+            <mat-card class="full-width"> User Status:<br>{{ userActivity.loginStatus}} </mat-card>
+          </div>
+          <div class="col-sm-6 col-md-3 col-lg-3 d-flex justify-content-start">
+            <mat-card class="full-width"> User Creation Date:<br>{{userActivity.created}} </mat-card>
+          </div>
+          <div class="col-sm-6 col-md-3 col-lg-3 d-flex justify-content-start">
+            <mat-card class="full-width"> Last Successfull Login:<br>{{userActivity.loginSuccess}} </mat-card>
+          </div>
+          <div class="col-sm-6 col-md-3 col-lg-3 d-flex justify-content-start">
+            <mat-card class="full-width"> Last Failed Login:<br>{{userActivity.loginFailed}} </mat-card>
+          </div>
+          <br>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+  <br>
+</div>

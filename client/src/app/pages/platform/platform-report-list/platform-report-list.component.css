@@ -1,0 +1,94 @@
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.mat-card {
+  /* box-shadow: 5px 10px;
+  border-radius: 30px ;
+  border: 2px solid #123cdf;*/
+  width: 100%;
+  margin: 10px;
+  /* border-radius: 30px; */
+}
+
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+}
+
+.Active{
+  color: lightgreen;
+  float:left;
+
+}
+
+
+.ACTIVE{
+  color: #40d812;
+  float:left;
+
+}
+.Non-Active {
+  color:red;
+  float:left;
+
+}
+
+.Hold {
+  color:blue ;
+  float:left;
+
+
+}
+
+.Blocked {
+  color: black ;
+  float:left;
+
+
+
+}
+
+.Expired {
+  color:grey ;
+  float:left;
+
+
+}
+
+.chart-frame{
+ background-color: orange;
+}
+
+
+.Not-Active{
+  color:grey;
+  float:left;
+
+}
+
+.Available{
+  color:darkgreen;
+  float:left;
+
+}
+
+
+.Not-Available{
+  color:red;
+  float:left;
+
+}
+
+
+.toolbar-title {
+  flex: 1 1 auto;
+  font-size: 24px;
+  color: #3f51b5;
+}
+

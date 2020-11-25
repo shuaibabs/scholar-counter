@@ -1,0 +1,135 @@
+<div class="container-fluid">
+
+  <div class="row d-flex justify-content-center">
+    <div class="col-sm-12 col-md-4 col-lg-4 d-flex justify-content-center">
+      <mat-card class="mc-team" style="width: 100%; margin-top: 10px; margin-bottom: 10px;">
+        <mat-card-header>
+          <!-- <div mat-card-avatar style="background-size: cover; background-image: url('./assets/images/librarian.jpg');">
+          </div> -->
+          <mat-card-title style="font-weight: 400;">Is your &nbsp;&nbsp;<span style="background-color:aliceblue; font-weight: 500; color: navy; text-decoration:underline">"TITLE SELECTION PROCESS"</span> optimized ?</mat-card-title>
+          <mat-card-subtitle>Not confident, then you are at right place.</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src='./assets/images/librarian.jpg' alt="ScholarCounter, Counter Reports">
+        <mat-card-content>
+            <span style="color: navy; font-size: 24px;">Take the next step! &nbsp;&nbsp;</span>
+            <button mat-raised-button (click)="requestDemo()" color="warn" style="float: right;"> Request a DEMO</button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="col-sm-12 col-md-4 col-lg-4 d-flex justify-content-center">
+      <mat-card class="mc-team" style="width: 100%; margin-top: 10px; margin-bottom: 10px;">
+        <mat-card-header style="width: 100%;">
+          <div mat-card-avatar
+            style="background-size: cover; background-image: url('./assets/images/product/scholarcounter.jpg');">
+          </div>
+          <mat-card-title>ScholarCounter</mat-card-title>
+          <mat-card-subtitle>Title Analysis and Cost Optimization Soln</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src='./assets/images/product/scholarcounter.jpg' alt="ScholarCounter, Counter Reports">
+        <mat-card-content>
+          <p>
+            ScholarCounter provides complete COUNTER-5 Reports analysis and
+            Title cost optimization techniques for Library, Consortium & Institutions.
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- LOGIN Stepper  -->
+    <div class="col-sm-12 col-md-4 col-lg-4 d-flex justify-content-center" style="width: 100%;">
+
+      <mat-card class="mc-team" style="width: 100%; margin-top: 10px;margin-bottom: 10px;">
+
+        <mat-horizontal-stepper [linear]="isLinear" #stepper style="width: 100%;">
+
+          <mat-step [stepControl]="firstFormGroup" style="width: 100%;">
+            <div class="row d-flex justify-content-center">
+              <img src="./assets/images/logo/sc_logo.png" alt="ScholarCounter">
+            </div>
+            <br><br>
+            <form [formGroup]="firstFormGroup" [formGroup]="form">
+              <div class="row justify-content-center">
+                <div style="font-size: 24px;"><b>{{userName}}</b></div>
+              </div>
+              <br><br>
+              <mat-card class="width-full justify-content-center" style="width: 100%;">
+                <form class="width-full">
+                  <mat-form-field class="width-full">
+                    <input matInput name="loginId" type="text" ngModel [(ngModel)]="loginID"
+                      [ngModelOptions]="{standalone: true}" placeholder="Login ID" required #loginId="ngModel"
+                      (keydown.enter)="validateUser(stepper)">
+                    <mat-error *ngIf="loginId.invalid"> {{errorMsg}} </mat-error>
+                  </mat-form-field>
+                  <br>
+                  <div>
+                    <br>
+                    <button mat-raised-button color="warn" (click)="cancel()" type="submit">Cancel</button>
+                    <button mat-raised-button color="primary" (click)="validateUser(stepper)" style="float: right;"
+                      type="submit">Next</button>
+                  </div><br><br>
+                  <label style="font-size: 12px;">
+                    <mat-checkbox [(ngModel)]="rememberMe" name="remember">&nbsp;Remember me &nbsp;&nbsp;</mat-checkbox>
+                  </label>
+                  <span class="psw" style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a (click)="openDialogError()" style="color: blue;cursor: pointer;">Forgot Username, Need
+                      Help??</a></span>
+                </form>
+              </mat-card>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="secondFormGroup" style="width: 100%;">
+            <form [formGroup]="secondFormGroup">
+              <div class="row justify-content-center">
+                <img mat-card-avatar style="height: 50px;width: 50px;" [src]="userPhoto" alt="Profile Pic"> </div><br>
+              <div class="row justify-content-center">
+                <p style="font-size:25px;font-family: Times; color: darkblue;">
+                  <a><b>{{userName}}</b></a>
+                </p>
+              </div>
+              <div class="row justify-content-center">
+                <p style="font-size: 14px;">
+                  {{loginID}}
+                </p>
+              </div>
+
+              <mat-card class="width-full justify-content-center">
+                <form class="width-full">
+                  <br>
+                  <mat-form-field class="width-full">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput name="password" [type]="hide ? 'password' : 'text'" ngModel
+                      [(ngModel)]="password" [ngModelOptions]="{standalone: true}" required #passKey="ngModel"
+                      (keydown.enter)="validateAuth()">
+                    <mat-error *ngIf="passKey.invalid"> {{errorMsg}} </mat-error>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                      [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                  </mat-form-field>
+
+                  <div>
+                    <button mat-raised-button color="warn" matStepperPrevious type="submit">Previous</button>
+                    <button mat-raised-button color="primary" (click)="validateAuth()" style="float: right;"
+                      type="submit">Next</button>
+                  </div>
+                  <br>
+                  <label style="font-size: 12px;">
+                    <mat-checkbox [(ngModel)]="savePassword" name="remember">&nbsp;Save password &nbsp;&nbsp;</mat-checkbox>
+                  </label>
+                  <span class="psw" style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Forgot Password, Need
+                      Help??</a></span>
+                </form>
+              </mat-card>
+            </form>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </mat-card>
+    </div>
+  </div>
+
+  <br>
+
+</div>
+<!-- <app-header></app-header> -->

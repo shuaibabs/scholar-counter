@@ -1,0 +1,15 @@
+<div class="container-fluid" style="margin-bottom: 5px" *ngIf="this.authService.isAuthenticated==false" >
+    <app-header class="row "></app-header>
+    <br>
+    <app-login></app-login>
+    <br>
+    <app-sc-details></app-sc-details>
+</div>
+
+<div class="container-fluid" *ngIf="authService.isAuthenticated==true">
+    <app-home class=""></app-home>
+</div>
+
+<div class="container-fluid">
+  <app-footer class="row"></app-footer>
+</div>

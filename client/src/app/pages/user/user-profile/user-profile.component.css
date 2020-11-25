@@ -1,0 +1,30 @@
+.frame {
+  border-radius: 50%;
+  width: 100%;
+  min-height: 200px;
+  /* height:180px; */
+  border: 1px solid #ccc;
+  background: #eee;
+  padding: 3px 3px;
+  cursor: pointer;
+}
+
+.color {
+  color: navy;
+  margin-left: 20px;
+}
+
+.heading {
+  color: navy;
+  font-size: 20px;
+  font: bold;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+.mat-card {
+  border: 2px solid navy;
+  width: 100%;
+}

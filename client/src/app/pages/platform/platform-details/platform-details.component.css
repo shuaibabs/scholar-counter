@@ -1,0 +1,41 @@
+.mat-card {
+  /* box-shadow: 5px 10px;
+    border-radius: 30px ;*/
+  border: 2px solid navy;
+  /* width: 100%; */
+  /* height: 350px; */
+  /* margin: 10px; */
+  /* border-radius: 30px; */
+}
+
+.mat-paginator{
+  width: 100% important!;
+}
+
+.active {
+  color: #40d812;
+  /* float: left; */
+}
+
+.non-active {
+  color: #ff1133;
+  /* float: left; */
+}
+.hold {
+  color: #0388e0;
+  /* float: left; */
+}
+
+.blocked {
+  color: #000000;
+  /* float: left; */
+}
+
+.expired {
+  color: #565a57;
+  /* float: left; */
+}
+
+.chart-frame {
+  background-color: orange;
+}

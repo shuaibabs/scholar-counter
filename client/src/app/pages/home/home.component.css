@@ -1,0 +1,56 @@
+.header-button:hover {
+/* color: orange !important; */
+/* border: 2px solid darkgreen !important; */
+color: yellow !important;
+border: 2px solid orange !important;
+font-size: 32px;
+}
+
+.toolbar-row {
+  /* flex: 1 1 auto; */
+  text-align: center;
+  align-items: center;
+  height: 60px;
+  font-size: 25px;
+  color: whitesmoke;
+  background-color: navy;
+  width: 100%;
+}
+
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-expansion-panel-header.mat-expanded,
+.mat-expansion-panel-header.mat-expanded:hover,
+.mat-expansion-panel-header.mat-expanded:focus {
+  background-color: greenyellow !important;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.mat-expansion-panel-header:hover{
+  /* background-color: orange !important; */
+  /* border: 2px solid darkgreen !important; */
+  background-color: yellow !important;
+  border: 2px solid orange !important;
+}
+
+.app-footer {
+  /* height: 20px; */
+  font-size: 14px;
+  background-color:whitesmoke;
+  color: navy;
+  text-align: center;
+}
+
+.sidenav{
+  background-color: lightblue;
+  height: 100%;
+  min-width: 200px;
+  max-width: 250px;
+}

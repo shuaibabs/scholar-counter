@@ -1,0 +1,142 @@
+<div *ngIf="first">
+    <span class="material-icons" style="float: right;cursor: pointer;color: red;margin-right: -25px;margin-top: -25px;"
+        (click)="onNoClick()">
+        clear
+    </span>
+    <mat-card>
+        <form class="width-full">
+            Please enter your Login Id to search for your account.<br>
+
+            <mat-form-field class="width-full">
+                <input matInput type="text" name="userName" ngModel [(ngModel)]="data.username"
+                    [ngModelOptions]="{standalone: true}" placeholder="Login ID/ Email" required
+                    #userName="ngModel" (keydown.enter)="search()">
+                <mat-error *ngIf="userName.invalid">Please enter a valid Login ID/ Email</mat-error>
+            </mat-form-field>
+            <br>
+            <br>
+            <div>
+                <button mat-raised-button color="primary" type="submit" (click)="search()">Search</button>
+                <button mat-raised-button color="warn" style="float: right;" (click)="onNoClick()"
+                    type="submit">Close</button>
+            </div>
+        </form>
+    </mat-card>
+</div>
+
+
+
+<div *ngIf="second">
+    <span class="material-icons" style="float: right;cursor: pointer;color: red;margin-right: -25px;margin-top: -25px;"
+        (click)="onNoClick()">
+        clear
+    </span>
+    <mat-card>
+        <div class="heading">Answer the followiing security question.</div><br>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                    <mat-card>
+                        <mat-form-field appearance="fill" class="full-width">
+                            <mat-label>Security Question No. 1</mat-label>
+                            <input matInput placeholder="Security Question No. 1" [(ngModel)]="model.question_1" readonly>
+                        </mat-form-field> <br>
+                        <mat-form-field appearance="standard" class="full-width">
+                            <mat-label>Security Answer No. 1</mat-label>
+                            <input matInput placeholder="Security Answer No. 1" [(ngModel)]="varify.answer_1" >
+                        </mat-form-field>
+                    </mat-card>
+                </div>
+
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                    <mat-card>
+                        <mat-form-field appearance="fill" class="full-width">
+                            <mat-label>Security Question No. 2</mat-label>
+                            <input matInput placeholder="Security Question No. 2" [(ngModel)]="model.question_2" readonly>
+                        </mat-form-field> <br>
+                        <mat-form-field appearance="standard" class="full-width">
+                            <mat-label>Security Answer No. 2</mat-label>
+                            <input matInput placeholder="Security Answer No. 2" [(ngModel)]="varify.answer_2">
+                        </mat-form-field>
+                    </mat-card>
+                </div>
+
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                    <mat-card>
+                        <mat-form-field appearance="fill" class="full-width">
+                            <mat-label>Security Question No. 3</mat-label>
+                            <input matInput placeholder="Security Question No. 3" [(ngModel)]="model.question_3" readonly> 
+                        </mat-form-field> <br>
+                        <mat-form-field appearance="standard" class="full-width">
+                            <mat-label>Security Answer No. 3</mat-label>
+                            <input matInput placeholder="Security Answer No. 3" [(ngModel)]="varify.answer_3">
+                        </mat-form-field>
+                    </mat-card>
+                </div>
+
+                <div class="col-sm-4 col-md-4 col-lg-8" style="margin-top: 20px;">
+                    <button mat-raised-button color="primary" (click)="submit()" style="float: right;">update</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button mat-raised-button color="warn" style="float: right;" (click)="onNoClick()">Close</button>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</div>
+
+<div class="full-width" *ngIf="third">
+    <span class="material-icons" style="float: right;cursor: pointer;color: red;margin-right: -25px;margin-top: -25px;"
+        (click)="onNoClick()">
+        clear
+    </span>
+    <mat-card class="full-width">
+        <!-- for change password -->
+        <div class="heading">Change Password</div><br>
+
+        <form class="full-width">
+            <mat-form-field class="full-width">
+                <mat-label>Current Password</mat-label>
+                <input matInput name="password" [type]="hide1 ? 'password' : 'text'" ngModel
+                    [(ngModel)]="varify.first_passwd" [ngModelOptions]="{standalone: true}" required #passKey="ngModel">
+                <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide1">
+                    <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <br>
+            <mat-form-field class="full-width">
+                <mat-label>New Password</mat-label>
+                <input matInput name="password" [type]="hide2 ? 'password' : 'text'" ngModel
+                    [(ngModel)]="varify.second_passwd" [ngModelOptions]="{standalone: true}" required
+                    #passKey="ngModel">
+                <mat-error *ngIf="passKey.invalid"> {{varify.erro_message}} </mat-error>
+                <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide2">
+                    <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <br><br>
+            <div>
+                <button mat-raised-button (click)="changePassword()" color="primary">update</button>
+                <button mat-raised-button color="warn" style="float: right;" (click)="onNoClick()">Close</button><br>
+            </div>
+        </form>
+    </mat-card>
+</div>
+
+<div *ngIf="fourth" class="full-width">
+    <span class="material-icons" style="float: right;cursor: pointer;color: red;margin-right: -25px;margin-top: -25px;"
+        (click)="onNoClick()">
+        clear
+    </span>
+    <mat-card>
+
+        <div style="font-size: 18px;">{{varify.notFound_QA}} </div>
+        <hr>
+        <button mat-raised-button color="warn" style="float: right;" (click)="onNoClick()">Close</button>
+        <br>
+    </mat-card>
+</div>
